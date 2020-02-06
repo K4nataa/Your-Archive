@@ -12,6 +12,8 @@ using Your_Archive.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using GleamTech.AspNet.Core;
+using GleamTech.FileUltimate;
 
 namespace Your_Archive
 {
@@ -34,6 +36,7 @@ namespace Your_Archive
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddGleamTech();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +54,11 @@ namespace Your_Archive
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+
+            app.UseGleamTech();
+            //Set this property only if you have a valid license key, otherwise do not 
+            //set it so FileUltimate runs in trial mode.  
+            //FileUltimateConfiguration.Current.LicenseKey = "QQJDJLJP34...";
             app.UseStaticFiles();
 
             app.UseRouting();

@@ -22,6 +22,10 @@ namespace Your_Archive.Controllers
         {
             return View();
         }
+        public IActionResult Filemanager()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {
