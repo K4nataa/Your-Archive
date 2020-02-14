@@ -1,36 +1,23 @@
-﻿
+﻿@model Your_Archive.Models.ApplicationUser
 @using GleamTech.AspNet.Core
 @using GleamTech.FileUltimate.AspNet.UI
 
 <!DOCTYPE html>
 @{
-    var fileManager = new FileManager
+    var fileUploader = new FileUploader
     {
-        Width = 800,
-        Height = 600,
-        Resizable = true
+        Width = 600,
+        Height = 300,
+        Resizable = true,
+        UploadLocation = "~/VoorDeUsers/"@*{ @Model.Email. }*@ 
     };
-
-    var rootFolder = new FileManagerRootFolder
-    {
-        Name = "wwwroot",
-        Location = @"C:\Users\Joshu\source\repos\Your_Archive\Your_Archive\wwwroot" @* C:\Users\Joshu\source\repos\Your_Archive\Your_Archive\wwwroot deze is voor josh laptop*@
-    };
-
-    rootFolder.AccessControls.Add(new FileManagerAccessControl
-    {
-        Path = @"\",
-        AllowedPermissions = FileManagerPermissions.Full
-    });
-
-    fileManager.RootFolders.Add(rootFolder);
 }
 <html>
 <head>
-    <title>File Manager</title>
-    @this.RenderHead(fileManager)
+    <title>File Uploader</title>
+    @this.RenderHead(fileUploader)
 </head>
 <body>
-    @this.RenderBody(fileManager)
+    @this.RenderBody(fileUploader)
 </body>
 </html>
